@@ -1,6 +1,6 @@
 pragma solidity ^0.4.17;
 
-contract RetailerRole {
+contract DistributorRole {
     
     struct CollectProduct {
         string productId;
@@ -8,47 +8,46 @@ contract RetailerRole {
     }
     //"100", "2019/01/30"
     
-    struct SellProduct {
+    struct ShipProduct {
         string productId;
-        string soldOn;
+        string shippedOn;
     }
     
     //"100", "2019/01/31"
     
-    mapping(string => RetailerRole.CollectProduct) collectedProducts;
-    mapping(string => RetailerRole.SellProduct) soldProducts;
+    mapping(string => DistributorRole.CollectProduct) collectedProducts;
+    mapping(string => DistributorRole.ShipProduct) shippedProducts;
     
     function collectProduct(
     string _productId, 
     string _collectedOn
     ) 
     public {
-        collectedProducts[_productId] = RetailerRole.CollectProduct({
+        collectedProducts[_productId] = DistributorRole.CollectProduct({
             productId: _productId,
             collectedOn: _collectedOn
         });
     }
     
-    function sellProduct(
+    function shipProduct(
     string _productId, 
-    string _soldOn
+    string _shippedOn
     ) 
     public {
         delete collectedProducts[_productId];
         
-        soldProducts[_productId] = RetailerRole.SellProduct({
+        shippedProducts[_productId] = DistributorRole.ShipProduct({
             productId: _productId,
-            soldOn: _soldOn
+            shippedOn: _shippedOn
         });
     }
     
-    function isInStock(string _productId) public constant returns (bool){
-        if (keccak256(collectedProducts[_productId].productId ) == keccak256('')) {
+    function isProductShipped(string _productId) public constant returns (bool){
+        if (keccak256(shippedProducts[_productId].productId ) == keccak256('')) {
             return false;
         }
         
         return true;
     }
-    
     
 }
