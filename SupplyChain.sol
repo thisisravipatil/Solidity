@@ -22,6 +22,10 @@ contract SupplyChain {
     mapping(string => SupplyChain.ProductDetails) products;
     mapping(string => Shipment) productIdAvailableAt;
     
+    constructor() public {
+        
+    }
+    
     function createProduct(
     string _productId, 
     string _productUpcCode,

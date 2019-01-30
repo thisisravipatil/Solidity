@@ -10,6 +10,10 @@ contract ConsumerRole {
     
     mapping(string => ConsumerRole.ReceiveProduct) receivedProduct;
     
+    constructor() public {
+        
+    }
+    
     function receiveProduct(
     string _productId, 
     string _receivedOn
@@ -27,4 +31,12 @@ contract ConsumerRole {
         return receivedState.receivedOn;
     }
     
+    function isProductReceived(string _productId) public view returns (bool){
+        
+        if (keccak256(receivedProduct[_productId].productId ) == keccak256('')) {
+            return false;
+        }
+        
+        return true;
+    }
 }

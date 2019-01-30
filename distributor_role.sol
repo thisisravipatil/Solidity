@@ -18,6 +18,10 @@ contract DistributorRole {
     mapping(string => DistributorRole.CollectProduct) collectedProducts;
     mapping(string => DistributorRole.ShipProduct) shippedProducts;
     
+    constructor() public {
+        
+    }
+    
     function collectProduct(
     string _productId, 
     string _collectedOn

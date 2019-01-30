@@ -10,6 +10,10 @@ contract Ownable {
     
     mapping(string => Ownable.ProductOwnership) productOwners;
     
+    constructor() public {
+        
+    }
+    
     function ownAProduct(
     string _productId, 
     string _owner

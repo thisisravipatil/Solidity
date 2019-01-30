@@ -18,6 +18,10 @@ contract RetailerRole {
     mapping(string => RetailerRole.CollectProduct) collectedProducts;
     mapping(string => RetailerRole.SellProduct) soldProducts;
     
+    constructor() public {
+        
+    }
+    
     function collectProduct(
     string _productId, 
     string _collectedOn
