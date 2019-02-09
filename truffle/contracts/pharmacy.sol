@@ -1,6 +1,6 @@
 pragma solidity >=0.5.0 <0.6.0;
 
-contract RetailerRole {
+contract Pharmacy {
     
     struct CollectProduct {
         string productId;
@@ -15,8 +15,8 @@ contract RetailerRole {
     
     //"100", "2019/01/31"
     
-    mapping(string => RetailerRole.CollectProduct) collectedProducts;
-    mapping(string => RetailerRole.SellProduct) soldProducts;
+    mapping(string => Pharmacy.CollectProduct) collectedProducts;
+    mapping(string => Pharmacy.SellProduct) soldProducts;
     
     constructor() public {
         
@@ -27,7 +27,7 @@ contract RetailerRole {
     string memory _collectedOn
     ) 
     public {
-        collectedProducts[_productId] = RetailerRole.CollectProduct({
+        collectedProducts[_productId] = Pharmacy.CollectProduct({
             productId: _productId,
             collectedOn: _collectedOn
         });
@@ -40,7 +40,7 @@ contract RetailerRole {
     public {
         delete collectedProducts[_productId];
         
-        soldProducts[_productId] = RetailerRole.SellProduct({
+        soldProducts[_productId] = Pharmacy.SellProduct({
             productId: _productId,
             soldOn: _soldOn
         });

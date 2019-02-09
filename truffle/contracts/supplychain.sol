@@ -7,10 +7,10 @@ contract SupplyChain {
         string productUpcCode;
         string productDetails;
         string origination;
-        string farm;
-        string miscellaneous;
+        string manufacturer;
+        string otherDetails;
     }
-    //"100", "ASDFNLKIWNL", "White Collared Shirt", "Bulgaria", "Cotton farm", "No pockets, Full sleeves"
+    //"100", "ASDFNLKIWNL", "White Collared Shirt", "Bulgaria", "X manufacturer", "Only prescribed, For external use only"
     
     struct Shipment {
         string productId;
@@ -31,8 +31,8 @@ contract SupplyChain {
     string memory _productUpcCode,
     string memory _productDetails,
     string memory _origination,
-    string memory _farm,
-    string memory _miscellaneous
+    string memory _manufacturer,
+    string memory _otherDetails
     ) 
     public {
         products[_productId] = SupplyChain.ProductDetails({
@@ -40,8 +40,8 @@ contract SupplyChain {
             productUpcCode: _productUpcCode,
             productDetails: _productDetails,
             origination: _origination,
-            farm: _farm,
-            miscellaneous: _miscellaneous
+            manufacturer: _manufacturer,
+            otherDetails: _otherDetails
         });
         
         productIdAvailableAt[_productId] = SupplyChain.Shipment({

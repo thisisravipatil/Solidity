@@ -9,6 +9,7 @@ contract ConsumerRole {
     //"100", "2019/01/30"
     
     mapping(string => ConsumerRole.ReceiveProduct) receivedProduct;
+    string prescription = "1. Hair oil\n 2. Shampoo";
     
     constructor() public {
         
@@ -39,4 +40,9 @@ contract ConsumerRole {
         
         return true;
     }
+    
+    function producePrescription() public view returns (string memory) {
+        return prescription;
+    }
+    
 }
